@@ -14,6 +14,7 @@ button.addEventListener("click", function(){
   const newActivity = inputField.value;
   activities.push(newActivity);
   showContent();
+  inputField.value = "";
 })
 
 function showContent() {
