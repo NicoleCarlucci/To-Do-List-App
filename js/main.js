@@ -9,7 +9,7 @@ let activities = [];
 
 showContent();
 
-//Add Event Listener
+//Add Event Listener to the button
 button.addEventListener("click", function(){
   const newActivity = inputField.value;
   activities.push(newActivity);
@@ -31,6 +31,17 @@ function showContent() {
         <p class="to-do-text">${activity}</p>
       </li>
       `;
+    });
+
+    //Select every to-do-check
+    const checks = document.querySelectorAll(".to-do-check");
+
+    //Add Event Listener for each check
+    checks.forEach(function(check, index){
+      check.addEventListener("click", function(){
+        activities.splice(index, 1);
+        showContent();
+      });
     })
   } else {
     emptyListMessage.innerText = "Sembra non siano presenti attività";
