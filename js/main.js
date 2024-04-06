@@ -4,8 +4,18 @@ const inputField = document.querySelector("input");
 const toDoList = document.querySelector(".to-do-list");
 const emptyListMessage = document.querySelector(".empty-list-message");
 
+//Create local storage key
+const storageKey = "__bool_todo__";
+
 //List of Activities
 let activities = [];
+
+//Check local storage content
+const storage = localStorage.getItem(storageKey);
+
+if (storage){
+  activities = JSON.parse(storage);
+}
 
 showContent();
 
@@ -38,6 +48,10 @@ function makeCheckClickable(){
   checks.forEach(function(check, index){
     check.addEventListener("click", function(){
       activities.splice(index, 1);
+
+      //Update local storage
+      localStorage.setItem(storageKey, JSON.stringify(activities));
+
       showContent();
     });
   })
@@ -48,6 +62,10 @@ function addActivity(){
 
   if (newActivity.length > 0) {
     activities.push(newActivity);
+
+    //Update local storage
+    localStorage.setItem(storageKey, JSON.stringify(activities));
+
     showContent();
     inputField.value = "";
   }
