@@ -9,6 +9,13 @@ let activities = [];
 
 showContent();
 
+//Add Event Listener
+button.addEventListener("click", function(){
+  const newActivity = inputField.value;
+  activities.push(newActivity);
+  showContent();
+})
+
 function showContent() {
   toDoList.innerText = "";
   emptyListMessage.innerText = "";
