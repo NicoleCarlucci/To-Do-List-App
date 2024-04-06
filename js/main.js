@@ -12,10 +12,13 @@ showContent();
 //Add Event Listener to the button
 button.addEventListener("click", function(){
   const newActivity = inputField.value;
-  activities.push(newActivity);
-  showContent();
-  inputField.value = "";
-})
+
+  if (newActivity.length > 0) {
+    activities.push(newActivity);
+    showContent();
+    inputField.value = "";
+  }
+});
 
 function showContent() {
   toDoList.innerText = "";
